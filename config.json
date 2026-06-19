@@ -1,0 +1,14 @@
+[
+  {
+    "model": "qwen2.5-7b",
+    "port": 52625,
+    "host": "host.docker.internal",
+    "owner": "fastflowlm"
+  },
+  {
+    "model": "gemma2-9b",
+    "port": 52626,
+    "host": "host.docker.internal",
+    "owner": "google"
+  }
+]

@@ -1,0 +1,21 @@
+services:
+  router:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flm-api-multimodel-router
+    ports:
+      - "127.0.0.1:9567:9567"
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./data:/app/data
+    environment:
+      - ROUTER_PORT=9567
+      - ROUTER_HOST=0.0.0.0
+      - ROUTER_CONFIG_PATH=/app/config.json
+      - ROUTER_API_KEYS= # Comma-separated list of static API keys (leave blank to disable)
+      - ROUTER_ADMIN_KEY= # Master API key for key management (leave blank to disable)
+      - ROUTER_DB_PATH=/app/data/keys.db # Path to persistent SQLite DB file
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
